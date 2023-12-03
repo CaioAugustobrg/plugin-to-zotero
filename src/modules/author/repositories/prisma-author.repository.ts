@@ -7,8 +7,7 @@ import { PrismaService } from 'src/prisma.service';
 export class PrismaAuthorRepository implements AuthorRepository {
   constructor(private prisma: PrismaService) {}
   async findAuthorByName(name: string): Promise<Author | null> {
-    return (await this.prisma.author.findFirst({
-      where: { name: name },
-    })) as Author | null;
+    console.log(name);
+    return await this.prisma.author.findFirst({ where: { name } });
   }
 }
