@@ -18,7 +18,7 @@ Este módulo oferece funcionalidades para lidar com operação 'read' de autores
 
 DTOs são utilizados para transferir dados entre o cliente e o servidor, geralmente para definir a estrutura dos dados que serão transmitidos. Neste módulo, os seguintes DTOs são utilizados:
 
-- `FindAuthorDTO`: Define a estrutura para criar um novo autor.
+- `FindAuthorDTO`: Define a estrutura para procurar um autor.
 
 
 ### Modelos (Models)
