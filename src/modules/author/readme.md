@@ -11,7 +11,25 @@ Este módulo oferece funcionalidades para lidar com operação 'read' de autores
 - `AuthorService`: Contém a lógica de negócios relacionada aos autores.
 - `AuthorController`: Lida com as requisições HTTP relacionadas aos autores.
 - `PrismaAuthorRepository`: Implementação do contrato 'AuthorRepository' utilizando o Prisma para interagir com o banco de dados.
-- `AuthorRepository`: Contrato daquilo que pode acontecer junto ao banco de dados.
+
+## Estrutura do Módulo
+
+### DTOs (Data Transfer Objects)
+
+DTOs são utilizados para transferir dados entre o cliente e o servidor, geralmente para definir a estrutura dos dados que serão transmitidos. Neste módulo, os seguintes DTOs são utilizados:
+
+- `FindAuthorDTO`: Define a estrutura para criar um novo autor.
+
+
+### Modelos (Models)
+
+Os modelos (ou entidades) representam a estrutura dos dados dentro da aplicação. Neste módulo, os seguintes modelos são utilizados:
+
+- `AuthorModel`: Define a estrutura de dados para um autor, incluindo propriedades como id, nome, e relacionamentos com livros ou outras informações relevantes.
+
+### Contrato (Contract)
+
+- `AuthorRepository`: Este é o contrato que define as operações disponíveis para interagir com os dados de autores. 
 
 ## Instalação
 
