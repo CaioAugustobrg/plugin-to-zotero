@@ -4,13 +4,13 @@ import { Book } from 'src/modules/book/models/book.model';
 export type IAuthorProps = {
   id: string;
   name: string;
-  book: Book[];
+  book?: Book[];
 };
 
 export class Author extends Entity<IAuthorProps> {
   public id: string;
   public name: string;
-  public book: Book[];
+  public book?: Book[];
 
   public constructor(props: IAuthorProps) {
     super();
