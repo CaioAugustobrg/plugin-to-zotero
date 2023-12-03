@@ -1,27 +1,29 @@
-import { Controller, Post, Body, HttpCode, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  HttpCode,
+  HttpStatus,
+  HttpException,
+} from '@nestjs/common';
 import { FindAuthorDTO } from '../dtos/find-author.request';
 import { AuthorService } from '../services/author.service';
-import { HttpRequest } from 'src/ports/http';
-interface TypedRequest<T> extends HttpRequest {
-  body: T;
-}
+//import { HttpRequest } from 'src/ports/http';
+
 @Controller('authors')
 export class AuthorController {
   constructor(private readonly authorService: AuthorService) {}
 
   @Post()
   @HttpCode(HttpStatus.OK)
-  async findAuthor(@Body() findAuthorDTO: TypedRequest<FindAuthorDTO>) {
+  async findAuthor(@Body() findAuthorDTO: FindAuthorDTO) {
     try {
-      const foundAuthor = await this.authorService.handle(findAuthorDTO);
-
-      if (foundAuthor) {
-        return { message: 'Author found', author: foundAuthor };
-      } else {
-        return { message: 'Author not found' };
-      }
-    } catch (error) {
-      return { error: 'Failed to find author' };
+      console.log('controller', findAuthorDTO.name);
+      return await this.authorService.handle({
+        name: findAuthorDTO.name,
+      });
+    } catch (error: any) {
+      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
     }
   }
 }
